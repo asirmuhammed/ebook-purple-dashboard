@@ -4,12 +4,11 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
-
-
+{% load crispy_forms_tags %}
 
 <form method="post" action="">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <input type="submit" value="{% trans 'Log in' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
 </form>

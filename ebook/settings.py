@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'versatileimagefield',
     'tinymce',
     'django_extensions',
-
+    "crispy_forms",
+    "crispy_bootstrap5",
     
 ]
 
@@ -163,7 +164,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # crispy
 
-
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # redux
 
