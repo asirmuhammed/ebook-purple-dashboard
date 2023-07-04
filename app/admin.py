@@ -10,7 +10,6 @@ class BookInline(admin.TabularInline):
     fields = ("title","slug", "year", "price", "is_special", "is_trending")
    
 
-
 @admin.register(BookAuthor)
 class BookAuthorAdmin(admin.ModelAdmin):
     pass
@@ -24,4 +23,8 @@ class BookAdmin(ImportExportActionModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
-admin.site.register(FavoriteBook)
+
+@admin.register(FavoriteBook)
+class FavoriteBookAdmin(admin.ModelAdmin):
+    autocomplete_fields = ("user", "books")
+    
