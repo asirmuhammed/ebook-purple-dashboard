@@ -35,13 +35,17 @@ INSTALLED_APPS = [
     "admin_interface",
     "colorfield",
     'registration', 
+    
     "app",
+
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     'import_export',
     'versatileimagefield',
     'tinymce',
@@ -168,6 +172,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # redux
+from decouple import config
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
@@ -177,4 +182,17 @@ REGISTRATION_EMAIL_SUBJECT_PREFIX = ''
 REGISTRATION_OPEN = True
 LOGIN_URL = '/app/accounts/login/'
 LOGOUT_URL = '/app/accounts/logout/'
-LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL= config('DEFAULT_FROM_EMAIL')
+DEFAULT_BCC_EMAIL= config('DEFAULT_BCC_EMAIL')
+DEFAULT_REPLY_TO_EMAIL = config('DEFAULT_REPLY_TO_EMAIL')
+SERVER_EMAIL = config('SERVER_EMAIL')
+ADMIN_EMAIL = config('ADMIN_EMAIL')

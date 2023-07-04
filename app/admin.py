@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, BookAuthor
+from .models import Book, BookAuthor , FavoriteBook
 from import_export.admin import ImportExportActionModelAdmin
 
 # Register your models here.
@@ -24,3 +24,4 @@ class BookAdmin(ImportExportActionModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
+admin.site.register(FavoriteBook)

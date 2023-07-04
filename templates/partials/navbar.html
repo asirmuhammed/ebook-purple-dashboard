@@ -33,8 +33,13 @@
           <a class="dropdown-item" href="#">
             <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">
+          
+          {% if request.user.is_authenticated %}
+          <a class="dropdown-item" href="{% url 'auth_logout' %}">
             <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+          {% else %}
+          <a class="dropdown-item" href="{% url 'auth_login' %}"> <i class="mdi mdi-logout me-2 text-primary"></i> login </a>
+          {% endif %}
         </div>
       </li>
       <li class="nav-item d-none d-lg-block full-screen-link">
