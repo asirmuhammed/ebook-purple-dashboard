@@ -172,27 +172,32 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # redux
-from decouple import config
+
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-SEND_ACTIVATION_EMAIL = False
+
 REGISTRATION_EMAIL_SUBJECT_PREFIX = ''
 
 REGISTRATION_OPEN = True
-LOGIN_URL = '/app/accounts/login/'
-LOGOUT_URL = '/app/accounts/logout/'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/accounts/logout/'
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_BACKEND = config('EMAIL_BACKEND')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+#For email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_USE_TLS = True
 
-DEFAULT_FROM_EMAIL= config('DEFAULT_FROM_EMAIL')
-DEFAULT_BCC_EMAIL= config('DEFAULT_BCC_EMAIL')
-DEFAULT_REPLY_TO_EMAIL = config('DEFAULT_REPLY_TO_EMAIL')
-SERVER_EMAIL = config('SERVER_EMAIL')
-ADMIN_EMAIL = config('ADMIN_EMAIL')
+EMAIL_HOST = 'smtp-relay.brevo.com'
+
+EMAIL_HOST_USER = 'zoroxluuffy@gmail.com'
+
+#Must generate specific password for your app in [gmail settings][1]
+EMAIL_HOST_PASSWORD = 'hT546RAZxd7v2JyH'
+
+EMAIL_PORT = 587
+
+#This did the trick
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
